@@ -175,7 +175,7 @@ int main() {
 
     int l = 0;
     vector<vector<string>>list(n, vector<string>(m));
-    ifstream file("������� ������ csv.csv");
+    ifstream file("таблица заявок csv.csv");
     string line;
     for (int i = 0; i < n; i++) {
         getline(file, line);
@@ -188,7 +188,7 @@ int main() {
     }
     
     int l1 = 0;
-    ifstream file1("������� ����������� ����� (����������).csv");
+    ifstream file1("Таблица сотрудников новое (сотрудники).csv");
     string line1;
     for (int i = 0; i < n1; i++) {
         getline(file1, line1);
@@ -201,7 +201,7 @@ int main() {
     }
 
     vector<vector<string>>list2(n2, vector<string>(m2));
-    ifstream file2("������� ����������� (���������� ������) csv.csv");
+    ifstream file2("Таблица сотрудников (выполнение заявок) csv.csv");
     string line2;
 
     int l2 = 0;
@@ -217,11 +217,11 @@ int main() {
 
     vector<vector<string>>q(n3, vector<string>(m3));
 
-    q[0][0] = "��� ������";
-    q[0][1] = "������� �����";
-    q[0][2] = "������� ��� ��������";
-    q[0][3] = "�����";
-    q[0][4] = "����������";
+    q[0][0] = "Тип заявки";
+    q[0][1] = "Среднее время";
+    q[0][2] = "Фамилия Имя Отчество";
+    q[0][3] = "Сумма";
+    q[0][4] = "Количество";
 
     int t = 0;
     for (int i = 1; i < n2; i++) {
@@ -258,14 +258,14 @@ int main() {
     arr = q;
     QuickSort(1, t);
 
-    ofstream fil("������� �����.csv");
+    ofstream fil("Среднее время.csv");
     for (int i = 0; i <= t; i++)
         fil << arr[i][0] << ';' << arr[i][1] << ';' << arr[i][2] << ';' << arr[i][3] << ';' << arr[i][4] << '\n';
     
-    final_distribution[0][0] = "������� ��� ��������";
-    final_distribution[0][1] = "��� ������";
-    final_distribution[0][2] = "������ ������";
-    final_distribution[0][3] = "���� � ����� �����������";
+    final_distribution[0][0] = "Фамилия Имя Отчество";
+    final_distribution[0][1] = "Тип заявки";
+    final_distribution[0][2] = "Статус заявки";
+    final_distribution[0][3] = "Дата и время поступления";
 
     for (int i = 1; i < n; i++) {
         final_distribution[i][0] = "0";
@@ -308,17 +308,17 @@ int main() {
     }
     
     vector<vector<string>>finaly(n, vector<string>(m));
-    finaly[0][0] = "������� ��� ��������";
-    finaly[0][1] = "���� ��������";
-    finaly[0][2] = "������";
-    finaly[0][3] = "�������������";
-    finaly[0][4] = "�����";
-    finaly[0][5] = "���������";
-    finaly[0][6] = "���� ������";
-    finaly[0][7] = "��� ������";
-    finaly[0][8] = "���� � ����� �����������";
-    finaly[0][9] = "������ ������������";
-    finaly[0][10] = "������������ ������������, ���";
+    finaly[0][0] = "Фамилия Имя Отчество";
+    finaly[0][1] = "Дата рождения";
+    finaly[0][2] = "Филиал";
+    finaly[0][3] = "Подразделение";
+    finaly[0][4] = "Отдел";
+    finaly[0][5] = "Должность";
+    finaly[0][6] = "Стаж работы";
+    finaly[0][7] = "Тип заявки";
+    finaly[0][8] = "Дата и время поступления";
+    finaly[0][9] = "Начало рассмотрения";
+    finaly[0][10] = "Длительность рассмотрения, сек";
 
     for (int i = 1; i < n; i++) {
         finaly[i][0] = final_distribution[i][0];
@@ -334,7 +334,7 @@ int main() {
         finaly[i][9] = FuncTimePer(final_distribution[i][3]);
         finaly[i][10] = to_string(random(180, 900) * 10);
     }
-    ofstream fina("����.csv");
+    ofstream fina("Итог.csv");
     for (int i = 0; i < n; i++) {
         fina << finaly[i][0] << ";" << finaly[i][1] << ";" << finaly[i][2] << ";" << 
             finaly[i][3] << ";" << finaly[i][4] << ";" << finaly[i][5] << ";" << 
@@ -342,7 +342,7 @@ int main() {
             finaly[i][9] << ";" << finaly[i][10]<<"\n";
     }
 
-    cout << "����� ������: 100" << "\n";
-    cout << "���������� ������: 33" << "\n";
-    cout << "������������ ���������� ������ � ������ ����������: 3";
+    cout << "Норма заявок: 100" << "\n";
+    cout << "Количество заявок: 33" << "\n";
+    cout << "Максимальное количество заявок у одного сотрудника: 3";
 } 
